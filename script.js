@@ -1,56 +1,85 @@
-const computerChoiceDisplay = document.getElementById('computer-choice')
-const userChoiceDisplay = document.getElementById('user-choice')
-const resultDisplay = document.getElementById('result')
-const possibleChoices = document.querySelectorAll('button')
+const options = ['rock', 'paper', 'scissors'];
 
-let userChoice
-let computerChoice
-let result
+function getComputerChoice() {
+    const choice = options[Math.floor(Math.random() * options.length)];
+    return choice; 
+}
 
-possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
-    userChoice = e.target.id
-    userChoiceDisplay.innerHTML = userChoice
-    generateComputerChoice()
-    getResult()
-}))
+function checkWinner(playerSelection, computerSelection) {
+    if (computerSelection == playerSelection) {
+        return 'Tie';
+    }
+    else if (
+        (computerSelection == 'paper' && playerSelection == 'scissors') ||
+        (computerSelection == 'scissors' && playerSelection == 'rock')  ||
+        (computerSelection == 'rock' && playerSelection == 'scissors') 
+    ) {
+        return 'Player';
+    }
+    else {
+        return 'Computer';
+    }    
+}
 
-function generateComputerChoice() {
-    const randomNumber = Math.floor(Math.random() * 3) + 1 //You can also use possibleChoices.length
+function playRound(playerSelection, computerSelection) {
+    const result = checkWinner(playerSelection, computerSelection);
     
-    if (randomNumber === 1) {
-        computerChoice = 'rock'
+    if (result == 'Tie') {
+        return "It's a Tie!"
     }
-    if (randomNumber === 2) {
-        computerChoice = 'paper'
+    else if (result == 'Player') {
+        return `You Win! ${playerSelection} beats ${computerSelection}`
     }
-    if (randomNumber === 3) {
-        computerChoice = 'scissors'
-    }
-    computerChoiceDisplay.innerHTML = computerChoice
-}
-
-function getResult() {
-    if (computerChoice === userChoice) {
-        result = "It's a draw"
-    }
-    if (computerChoice === 'rock' && userChoice === 'paper') {
-        result = "You win!"
-    }
-    if (computerChoice === 'rock' && userChoice === 'scissors') {
-        result = "You lose!"
-    }
-    if (computerChoice === 'paper' && userChoice === 'scissors') {
-        result = "You win!"
-    }
-    if (computerChoice === 'paper' && userChoice === 'rock') {
-        result = "You win!"
-    }
-    if (computerChoice === 'scissors' && userChoice === 'rock') {
-        result = "You lose!"
-    }
-    if (computerChoice === 'scissors' && userChoice === 'paper') {
-        result = "You lose!"
+    else {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`
     }
 
-    resultDisplay.innerHTML = result
 }
+
+function getPlayerChoice () {
+    let validatedInput = false;
+    while (validatedInput == false){
+        const choice = prompt('Please Choose: Rock, Paper, or Scissors');
+        if (choice == null){
+            continue;
+        }
+        const choiceInLower = choice.toLowerCase();
+        if(options.includes(choiceInLower)) {
+            validatedInput = true;
+            return choiceInLower;
+        }
+    }
+}
+
+function game() {
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+        console.log('-------------')
+        
+        if (checkWinner(playerSelection, computerSelection) == 'Player') {
+            scorePlayer++;
+        }
+        else if (checkWinner(playerSelection, computerSelection) == 'Computer') {
+            scoreComputer++;
+        }
+
+    }
+    console.log('Game Over!');
+    if (scorePlayer > scoreComputer) {
+        console.log('Player Wins!');
+    }
+    else if (scorePlayer < scoreComputer) {
+        console.log('You Lose!');
+    }
+    else {
+        console.log("It's a Tie!");
+    }
+        
+}
+
+game()
