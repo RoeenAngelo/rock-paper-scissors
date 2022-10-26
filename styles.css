@@ -1,0 +1,81 @@
+.reset  {
+    display: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('/images/lake-river-city-buildings-skyline_107791-9055.webp');
+    width: 100vw;
+    height: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    color: rgb(56, 59, 51);
+    /* text-shadow: 0 0 4px rgb(71, 22, 22); */
+}
+
+.choices {
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+    margin-top: 200px;
+    position: absolute;
+    z-index: 1;
+}
+
+.playerImgs,
+.computerImgs {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    padding: 20px;
+    border: solid rgb(132, 31, 31) 5px;
+    border-radius: 25px;
+    max-height: 90px;
+}
+
+
+img {
+    width: 90px;
+    height: 90px;
+}
+
+.pImg:hover {
+    cursor: pointer;
+    width: 110px;
+    height: 110px;
+}
+
+.active {
+    width:  110px;
+    height: 110px;
+}
+
+.winner {
+    width: 100%;
+}
+
+.reset{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  background-color: solid rgba(10, 9, 9, 0.507);
+  color: black;
+  font-size: x-large;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.reset:hover{
+    cursor: pointer;
+}
+
+.winnerDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
