@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,6 +13,36 @@
         <h1>Rock Paper Scissors</h1>
         <button onclick="game()">Start Game</button>
         <p>This Game Is Played On The Console</p>
+=======
+    <title>Rock Paper Scissors</title> 
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="score">
+        <h1 class="ties">Ties: 0</h1>
+      </div>
+      <div class="winnerDiv">
+        <h1 class="winner"></h1>
+        <button class="reset" onclick="resetGame()">Play Again?</button>
+      </div>
+      <div class="playerSection">
+        <h3 class="playerChoice"></h3>
+        <h3 class="playerScore">Score: 0</h3>
+        <div class="playerImgs">
+            <img src="/images/raised-fist_270a.png" alt="Rock" class="pImg" id="rock">
+            <img src="/images/raised-hand_270b.png" alt="Paper" class="pImg" id="paper">
+            <img src="/images/victory-hand_270c-fe0f.png" alt="Scissors" class="pImg" id="scissors">
+        </div>
+    </div>
+    <div class="computerSection">
+        <h3 class="computerChoice"></h3>
+        <h3 class="computerScore">Score: 0</h3>
+        <div class="computerImgs">
+            <img src="/images/raised-fist_270a.png" alt="Rock" class="Rock">
+            <img src="/images/raised-hand_270b.png" alt="Paper" class="Paper">
+            <img src="/images/victory-hand_270c-fe0f.png" alt="Scissors" class="Scissors">
+        </div>
+>>>>>>> rps-ui
     </div>
 </body>
 <script src="script.js"></script>
